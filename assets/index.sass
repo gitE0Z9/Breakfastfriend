@@ -1,0 +1,304 @@
+@import "~/assets/rwd.sass"
+
+$primary-color: pink
+
+// global
+
+a
+  outline: 0
+  &:hover
+    text-decoration: none
+
+// global
+
+
+// page
+
+section
+  width: 100%
+  height: 100vh
+  padding: 30px
+  display: block
+  background-color: white
+  &.banner
+    background: url("~static/top.jpg") fixed
+    background-size: 100vw 100vh
+  &#intro
+    background: url("~static/product.png") no-repeat
+    background-size: 100vw 100vh
+  &#team
+    height: 75vh
+    @include phone-width
+      margin-top: 70vh
+
+.button--nav
+  display: inline-block
+  border-radius: 4px
+  border: 1px solid $primary-color
+  color: $primary-color
+  text-decoration: none
+  font-size: 20px
+  padding: 10px 30px
+  margin: 0px 10px
+  &:hover
+    color: #fff
+    background-color: $primary-color
+    text-decoration: none
+  @include phone-width
+    font-size: 15px
+
+h1
+  text-align: center
+  color: $primary-color
+  font-weight: bold
+  margin-bottom: 3%
+  &.big_word
+    text-align: left
+    font-size: 80px
+    margin-left: 10vw
+    text-shadow: 0 0 2px black
+    @include phone-width
+      font-size: 40px
+  &.form
+    font-size: 30px
+
+.bar
+  right: 23vw
+  top: 5vh
+  @include phone-width
+    top: 25vh
+    right: 28vw
+// page
+
+// sidebar
+
+.drawer
+  background: $primary-color
+  width: 50px
+  height: 50px
+  border-radius: 20em
+  position: fixed
+  text-align: center
+  z-index: 5
+  &:active
+    animation: show_me_menu .3s linear 1
+
+.show_me
+  position: relative
+  font-size: 40px
+  top: 5px
+  color: white
+  font-family: FontAwesome
+  @include phone-width
+    right: 0
+    top: 5px
+
+@keyframes show_me_menu
+  from
+    transform: rotate(0deg)
+  
+  to
+    transform: rotate(180deg)
+  
+
+.list-side
+  background: white
+  height: 100vh
+  position: fixed
+  right: 0
+  z-index: 5
+  @include pc-width
+    width: 17vw
+  @include pad-width
+    width: 20vw
+
+.list-group-item
+  border: none
+  font-size: 17px 
+  .active
+    background-color: black
+  &:hover
+    background-color: $primary-color
+
+
+.slide-fade-enter-active 
+  transition: all .3s ease
+
+.slide-fade-leave-active 
+  transition: all .1s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+
+.slide-fade-enter,
+.slide-fade-leave-to
+  transform: translateX(10px)
+  opacity: 0
+
+
+// sidebar
+
+// bottom footer 
+
+.godown
+  position: relative
+  top: 60vh
+  display: flex
+  justify-content: center
+  @include phone-width
+    top: 50vh
+  @include small-pad-width
+    top: 22vh // 沒用
+
+
+.rolldown
+  border: 2px $primary-color solid
+  border-radius: 50em
+  height: 70px
+  width: 40px
+  background: transparent
+  animation: bounce 2s ease-in-out infinite alternate
+  color: $primary-color
+  @include phone-width
+    height: 50px
+    width: 35px
+
+@keyframes bounce
+  from
+    transform: translateY(0)
+
+
+  to
+    transform: translateY(-20px)
+
+// bottom under 
+
+// form
+
+.submit
+  background: $primary-color
+  color: white
+  border: 2px $primary-color solid
+  &:hover
+    background: $primary-color
+    border: 2px $primary-color solid
+
+.data
+  border: 2px white solid
+  border-bottom: 1px lightgray solid
+  color: lightgray
+  &::-webkit-input-placeholder
+    font-size: 10px
+
+.back_icon
+  color: lightgray
+  transform: rotate(-35deg)
+  font-size: 100px
+  position: absolute
+  right: 4vw
+
+// form
+
+// product
+
+aside
+  max-width: 400px
+  background-color: rgba(255,255,255,0.9)
+  padding: 20px 30px
+  margin-left: 10vw
+  @include phone-width
+    margin-left: 0
+
+// product
+
+// partner
+
+.partner_intro
+  padding: 5px 4vw
+  @include phone-width
+    margin-bottom: 30px
+  
+.discount
+  font-style: italic
+  @include phone-width
+    margin: 0 -30px 
+
+.fa-star
+  color: yellow
+  text-shadow: 0px 0px 1px black
+
+.partner_photo
+  vertical-align: center 
+  z-index: 1
+
+// partner
+
+// team
+
+$photo_path: "~static/K.jpg","~static/B.jpg","~static/J.jpg","~static/M.jpg","~static/G.jpg"
+
+$name: "Kangwei Hung", "BigBig Tan", "Jinyuan Li", "Mike Bai", "Gin Wu"
+
+@for $i from 1 through length($name)
+  .member-#{$i}
+    height: 30vh
+    width: 15vw
+    background: url(nth($photo_path,$i))
+    background-position: top
+    background-size: cover
+    @include phone-width
+      height: 40vh
+      width: 85vw
+      margin-bottom: 12vh
+    &:hover
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(nth($photo_path,$i))
+      background-position: center, top
+      background-size: cover
+      &:before
+        top: 40%
+    &:before
+      content: nth($name,$i)
+      position: relative
+      width: 100%
+      height: 50px
+      color: white
+      background-color: $primary-color
+      justify-content: center
+      display: flex
+      flex-direction: column
+      font-size: 22px
+      text-align: center
+      top: calc(100% - 50px)
+      transition: top 0.5s ease
+      @include phone-width
+        top: 100%
+
+
+// team
+
+// contact
+
+$icon: "\f2a0", "\f0e0", "\f041", "\f073"
+
+@for $i from 1 through length($icon)
+  .info-#{$i}
+    position: relative
+    @include phone-width
+      padding-left: 30px 
+    @include small-pad-width
+      padding-left: 50px 
+    @include pad-width
+      padding-left: 20px 
+    &:before
+      content: nth($icon,$i)
+      font-family: FontAwesome
+      position: absolute
+      display: block
+      width: 50px
+      height: 50px
+      border: 2px $primary-color solid
+      font-size: 30px
+      text-align: center
+      top: 1vh
+      left: -5vw
+      @include phone-width
+        left: -10vw
+
+// contact

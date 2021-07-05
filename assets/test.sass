@@ -1,0 +1,89 @@
+@import "~/assets/rwd.sass"
+
+body
+    background: url('~static/test.png') no-repeat
+    background-size: 100vw 100vh
+    @include phone-width
+        background: pink
+
+.bar
+    font-size: 20px
+
+.poll
+    position: absolute
+    min-width: 40vw
+    height: auto
+    background: white
+    margin-left: 10vw
+    margin-top: 8vh
+    border-radius: 20px
+    @include phone-width
+        width: 80vw
+    &:before
+        content: "一起吃早餐交朋友問卷"
+        position: relative
+        background: powderblue
+        padding: 15px 30px
+        top: 0
+        left: 25%
+        color: white
+        text-align: center
+        font-size: 30px
+        @include phone-width
+            top: 0
+            left: 20%
+            font-size: 20px
+
+.page_number
+    position: relative
+    background: powderblue
+    width: 80px
+    height: 80px
+    top: -7vh
+    left: -5%
+    margin-bottom: -8vh
+    border-radius: 20em
+    text-align: center
+    display: flex
+    justify-content: center
+    flex-direction: column
+    font-size: 50px
+    color: white
+    @include phone-width
+        top: -12vh
+        width: 70px
+        height: 70px
+        margin-bottom: -17vh
+
+.title
+    position: relative
+    background: powderblue
+    text-align: center
+    padding: 20px 10px
+    width: 70%
+    top: -12vh
+    left: 15%
+    font-size: 30px
+    color: white
+    margin-bottom: -10vh
+    @include phone-width
+        top: -25vh
+        width: 70%
+        font-size: 20px
+        left: 18%
+        margin-bottom: -25vh
+
+.button--pink
+  display: inline-block
+  background: transparent
+  border-radius: 4px
+  border: 1px solid pink
+  color: white
+  text-decoration: none
+  padding: 0px 10px
+  margin: 0px 10px
+  &:hover
+    color: #fff
+    background-color: pink
+    border: 2px pink solid
+    text-decoration: none
